@@ -10,3 +10,4 @@ During its executing, the program will search for a `.vp`-file inside its direct
 
 The program generates a file `protocol_ExtremeHarmonic.txt` with detailed information on the execution, a file `params.txt` with detailed information about the non-large types used, a file `knapsackData.txt` containing the information needed for verifying the solutions of the knapsack problems with an external knapsack solver and a file `weights.txt` that contains item sizes and weights for all cases in human-readable form (though the values are rounded and thus not exact).
 
+We provide two input files for this program: [1.5813.vp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5813.vp) to prove the competitive ratio 1.5813 for Son of Harmonic, and [1.583.vp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.583.vp) to prove the competitive ratio of 1.583 within the Extreme Harmonic framework.
