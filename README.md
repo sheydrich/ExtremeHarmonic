@@ -35,17 +35,9 @@ This program was used to determine most of the parameters of the Son of Harmonic
 
 In addition, we provide a simplified version of our program, `SuperHarmonicVerifier.jar`, that can be used to verify the competitive ratio of Harmonic++ or other Super Harmonic algorithms as given by Seiden (S.S. Seiden "On the Online Bin Packing Problem", J. ACM 49(5), 640-671 (2002)). It works very similar to the `ExtremeHarmonicVerifier.jar` described above, however, you can additionally supply a command line argument to specify whether to prove the results with the exact parameters Seiden used (command line argument `original`) or whether to prove that a 1.5884-competitive algorithm exists within the SuperHarmonic framework by using improved (and also simplified) parameters provided by us (command line argument `improved`). If no argument is specified, the improved version is run.
 
-* [SuperHarmonicVerifier.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/SuperHarmonicVerifier.jar)
-* [1.5888.vp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.vp)
-* [1.5884.vp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.vp)
-
-* [BinarySearchSH.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/BinarySearchSH.jar)
-* [1.5888.bsp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.bsp)
-* [1.5884.bsp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.bsp)
-
-* [ParameterOptimizer.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/ParameterOptimizerSH.jar)
-* [1.5888.pop](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.pop)
-* [1.5884.pop](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.pop)
+* [SuperHarmonicVerifier.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/SuperHarmonicVerifier.jar) with input files [1.5888.vp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.vp) and [1.5884.vp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.vp)
+* [BinarySearchSH.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/BinarySearchSH.jar) with input files [1.5888.bsp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.bsp) and [1.5884.bsp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.bsp)
+* [ParameterOptimizer.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/ParameterOptimizerSH.jar) with input files [1.5888.pop](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.pop) and [1.5884.pop](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.pop)
 
 ## Other resources
 
