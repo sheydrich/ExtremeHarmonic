@@ -17,7 +17,7 @@ We provide two input files for this program, one to prove the competitive ratio 
 
 Using `1.5813.vp`, the program should run not more than a few minutes on a modern machine. Using `1.583.vp`, only 23 knapsack problems are generated, so that it is relatively easy to verify this result (which already proves that we can get below the Super Harmonic-lower bound). The program also runs much faster and should complete in a few seconds.
 
-In addition, we provide all parameters of the algorithm Son of Harmonic [on this page](https://sheydrich.github.io/ExtremeHarmonic/).
+In addition, we provide all parameters of the algorithm Son of Harmonic [on this page](https://sheydrich.github.io/ExtremeHarmonic/full-param-table.html).
 
 ### BinarySearch program
 
