@@ -17,6 +17,8 @@ We provide two input files for this program, one to prove the competitive ratio 
 
 Using `1.5813.vp`, the program should run not more than a few minutes on a modern machine. Using `1.583.vp`, only 23 knapsack problems are generated, so that it is relatively easy to verify this result (which already proves that we can get below the Super Harmonic-lower bound). The program also runs much faster and should complete in a few seconds.
 
+In addition, we provide all parameters of the algorithm Son of Harmonic [on this page](https://sheydrich.github.io/ExtremeHarmonic/).
+
 ### BinarySearch program
 
 This program was used to determine the y3-values that certify the feasibility of the dual LPs for Son of Harmonic. It can be executed the same way as `ExtremeHarmonicVerifier.jar` and uses a `.bsp`-file as input. This program generates the verifier input file as well. We again provide two input files for this program, for competitive ratios 1.5813 and 1.583.
