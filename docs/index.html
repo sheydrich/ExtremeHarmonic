@@ -29,54 +29,54 @@
 		</p>
 		<p>The program generates a file <i>protocol_ExtremeHarmonic.txt</i> with detailed information on the execution, a file <i>params.txt</i> with detailed information about the non-large types used, a file <i>knapsackData.txt</i> containing the information needed for verifying the solutions of the knapsack problems with an external knapsack solver and a file <i>weights.txt</i> that contains item sizes and weights for all cases in human-readable form (though the values are rounded and thus not exact).</p>
 		
-		<a href='./../executables/ExtremeHarmonicVerifier.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>ExtremeHarmonicVerifier.jar</i></a><br>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/ExtremeHarmonicVerifier.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>ExtremeHarmonicVerifier.jar</i></a><br>
 		
 		<p>In addition, we provide all parameters used by our algorithm SonOfHarmonic on the following page: <a href='./full-param-table.html'><i>Parameters for SonOfHarmonic</i></a>. <!--They can also be downloaded as a PDF file here: <a href="./ParametersSonOfHarmonic.pdf"><span class="glyphicon glyphicon-download-alt"></span> <i>Download ParametersSonOfHarmonic.pdf</i></a>-->
 		</p>
 		
 		<p>We provide two input files for this program: one to prove the competitive ratio 1.5813 for Son of Harmonic, and one to prove the competitive ratio of 1.583 within the Extreme Harmonic framework.</p>
 		
-		<a href='./1.5813.vp'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.5813.vp</i></a><br/>
-		<a href='./1.583.vp'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.583.vp</i></a>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5813.vp'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.5813.vp</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.583.vp'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.583.vp</i></a>
 		
 		<p>Using <i>1.5813.vp</i>, the program should run not more than a few minutes on a modern machine. Using <i>1.583.vp</i>, only 23 knapsack problems are generated, so that it is relatively easy to verify this result (which already proves that we can get below the Super Harmonic-lower bound). The program also runs much faster and should complete in a few seconds.</p>
 		
 		<h3>BinarySearch program</h3>
 		<p> This program was used to determine the <i>y<sub>3</sub></i>-values that certify the feasibility of the dual LPs for Son of Harmonic. It can be executed the same way as <i>ExtremeHarmonicVerifier.jar</i> and uses a <i>.bsp</i>-file as input. This program generates the verifier input file as well.</p>
 		
-		<a href='./BinarySearch.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>BinarySearch.jar</i></a><br>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/BinarySearch.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>BinarySearch.jar</i></a><br>
 		
 		<p>We again provide two input files for this program, for competitive ratios 1.5813 and 1.583.</p>
 		
-		<a href='./1.5813.bsp'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.5813.bsp</i></a><br/>
-		<a href='./1.583.bsp'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.583.bsp</i></a>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5813.bsp'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.5813.bsp</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.583.bsp'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.583.bsp</i></a>
 		
 		<h3>ParameterOptimizer program</h3>
 		<p>This program was used to determine most of the parameters of the Son of Harmonic algorithm. Given only few manually set parameters, it adds additional types and computes <i>red</i>-values for them using heuristics that are supposed to make sure that the final competitive ratio (which is already supplied to this program) can be achieved. 
 		It can be executed the same way as <i>ExtremeHarmonicVerifier.jar</i> and uses a <i>.pop</i>-file as input.
 		This program generates the input file for the <i>BinarySearch.jar</i> program as well.</p>
 		
-		<a href='./ParameterOptimizer.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>ParameterOptimizer.jar</i></a><br>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/ParameterOptimizer.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>ParameterOptimizer.jar</i></a><br>
 		
 		<p>We again provide two input files for this program, for competitive ratios 1.5813 and 1.583.</p>
 		
-		<a href='./1.5813.pop'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.5813.pop</i></a><br/>
-		<a href='./1.583.pop'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.583.pop</i></a>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5813.pop'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.5813.pop</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.583.pop'><span class="glyphicon glyphicon-download-alt"></span> Download Input File <i>1.583.pop</i></a>
 		
 		
 		<h3>SuperHarmonic program</h3>
 		
 		<p>In addition, we provide a simplified version of our program, <i>SuperHarmonicVerifier.jar</i>, that can be used to verify the competitive ratio of Harmonic++ or other Super Harmonic algorithms as given by Seiden (S.S. Seiden "On the Online Bin Packing Problem", J. ACM 49(5), 640-671 (2002)). It works very similar to the <i>ExtremeHarmonicVerifier.jar</i> described above, however, you can additionally supply a command line argument to specify whether to prove the results with the exact parameters Seiden used (command line argument <span style="font-family:monospace;"><strong>original</strong></span>) or whether to prove that a 1.5884-competitive algorithm exists within the SuperHarmonic framework by using improved (and also simplified) parameters provided by us (command line argument <span style="font-family:monospace;"><strong>improved</strong></span>). If no argument is specified, the improved version is run.</p>
 		
-		<a href='./SuperHarmonicVerifier.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>SuperHarmonicVerifier.jar</i></a><br/>
-		<a href='./1.5888.vp'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5888.vp</i></a><br/>
-		<a href='./1.5884.vp'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5884.vp</i></a><br/><br/>
-		<a href='./BinarySearchSH.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>BinarySearchSH.jar</i></a><br/>
-		<a href='./1.5888.bsp'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5888.bsp</i></a><br/>
-		<a href='./1.5884.bsp'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5884.bsp</i></a><br/><br/>
-		<a href='./ParameterOptimizerSH.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>ParameterOptimizerSH.jar</i></a><br/>
-		<a href='./1.5888.pop'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5888.pop</i></a><br/>
-		<a href='./1.5884.pop'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5884.pop</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/SuperHarmonicVerifier.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>SuperHarmonicVerifier.jar</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.vp'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5888.vp</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.vp'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5884.vp</i></a><br/><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/BinarySearchSH.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>BinarySearchSH.jar</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.bsp'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5888.bsp</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.bsp'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5884.bsp</i></a><br/><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/ParameterOptimizerSH.jar'><span class="glyphicon glyphicon-download-alt"></span> Download <i>ParameterOptimizerSH.jar</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.pop'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5888.pop</i></a><br/>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.pop'><span class="glyphicon glyphicon-download-alt"></span> Download input file <i>1.5884.pop</i></a><br/>
 	
 <!--	
 		<h3>Verifier programs</h3>
@@ -102,11 +102,11 @@
 		<a href='./src.zip'><span class="glyphicon glyphicon-download-alt"></span> Download Source Code (provided for reference)</a>
 		<p>This is a <i>.zip</i>-file containing the source code for all programs described above.</p>
 		
-		<a href='./knapsackData.txt'><span class="glyphicon glyphicon-download-alt"></span> Download the knapsack problem input</a>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/knapsackData.txt'><span class="glyphicon glyphicon-download-alt"></span> Download the knapsack problem input</a>
 		<p>This file contains the input data for the final knapsack problems. This file is also produced as an output of <i>ExtremeHarmonicVerifier.jar</i>. By providing this input,
 		we enable readers to check the solution to the knapsack problem with a knapsack solver of their choice.</p>
 		
-		<a href='./weights.txt'><span class="glyphicon glyphicon-download-alt"></span> Download the weights for the knapsack problem</a>
+		<a href='https://github.com/sheydrich/ExtremeHarmonic/blob/master/weights.txt'><span class="glyphicon glyphicon-download-alt"></span> Download the weights for the knapsack problem</a>
 		<p>This file contains the input data for the final knapsack problems, however, in human-readable rounded form (i.e., no exact values are given). This file is also produced as an output of <i>ExtremeHarmonicVerifier.jar</i>. This is to enable a reader easy inspection of the weights generated by the program.</p>
 		
 		<a href='./LowerBound.java'><span class="glyphicon glyphicon-download-alt"></span> Download source code for determining the lower bound</a>
