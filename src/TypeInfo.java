@@ -91,14 +91,18 @@ public class TypeInfo {
 	 */
 
 	public BigFraction getWeightW(int k) {
-		if (needs>=k || needs==0) return blueWeight.add(redWeight);
+		if (isWHigh(k)) return blueWeight.add(redWeight);
 		else return blueWeight;
 	}
 	
+	public boolean isWHigh(int k) { return needs>=k || needs==0; }
+	
 	public BigFraction getWeightV(int k) {
-		if (leaves<k) return blueWeight.add(redWeight);
+		if (isVHigh(k)) return blueWeight.add(redWeight);
 		else return redWeight;
 	}
+	
+	public boolean isVHigh(int k) { return leaves<k; }
 
 	public void computeWeights() {
 		redWeight = redFraction.equals(BigFraction.ZERO) ? redFraction : redFraction.divide(redfit);

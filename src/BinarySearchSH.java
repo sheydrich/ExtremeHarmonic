@@ -62,6 +62,7 @@ public class BinarySearchSH extends DualLPChecker {
 		this.sandExpansion = BigFraction.ONE.divide(BigFraction.ONE.subtract(types[types.length-1].getSizeLB()));
 		for (int i = 0; i<types.length; ++i)
 			types[i].computeWeights();
+		patternWeightThreshold = targetRatio.subtract(new BigFraction(1,1000));
 		log("\n\tTARGET RATIO: "+targetRatio.doubleValue()+"\n--------------------------------------------");
 	}
 
@@ -72,73 +73,79 @@ public class BinarySearchSH extends DualLPChecker {
 		log("--------------------------------------------");
 		log("Starting the binary searches for values of y3 for all k.");
 		log("--------------------------------------------\n");
+		
+		checkKPlusOne();
 
 		for (int k = 0; k<redSpace.length; ++k) {
 			if (!isNecessaryToCheckCase(k)) continue; //if this value of k is impossible (no item of this red class), skip it
-
-			//the initial search space is the interval [0, 3/8]
-			//this is a heuristic; it should be [0, 1/2] but y3 never ends up in that range
-			//the reason for picking 3/8 is that y3 = 3/16 works in the great majority of cases
-			BigFraction[] ellipsoid = {BigFraction.ZERO, new BigFraction(3,8)};
-			//the initial y3 value is 3/16
-			BigFraction y3_center = new BigFraction(3,16);
-
-			//store the difference to the last y3 value tried; this is for stopping the search when 
-			//it changes only marginally
-			BigFraction y3_diff = BigFraction.ONE;
-			//also, count the number of iterations; we also stop after a maximum number of iterations
-			int iter = 0;
-			int maxIter = 20;
-
-			KnapsackPattern maxWeightPattern = null;
-			while (iter<maxIter && y3_diff.compareTo(new BigFraction(1, 10000000))>0) {
-				iter++;
-				//test next y3-value: check feasibility of the dual LP
-				maxWeightPattern = checkDualLP(k, y3_center);
-
-				// GOOD CASE: the dual LP is feasible, so we can stop the search for this case and store the y3-value
-				if (maxWeightPattern==null || maxWeightPattern.getTotalWeightInclSand(sandExpansion).compareTo(targetRatio)<=0) {
-					log("\tFeasible!");
-					y3Values[k] = y3_center;
-					break;
-				} else {
-					//LP is infeasible: heaviestPattern contains the pattern that violates the constraint, 
-					//i.e. the pattern that has weight larger than y4
-					log("\tHeaviest pattern: " + maxWeightPattern);
-					log("\t\tWeights: " + maxWeightPattern.weightString());
-					log("\t\tTotal weight: " + maxWeightPattern.getTotalWeightInclSand(sandExpansion).doubleValue());
-					BigFraction diff = maxWeightPattern.getTotalWeightWInclSand(types, k, sandExpansion)
-							.subtract(maxWeightPattern.getTotalWeightVInclSand(types, k, sandExpansion));
-					if (diff.compareTo(BigFraction.ZERO)>0) {//change the search interval for y3
-						ellipsoid[0] = y3_center;
-					} else {
-						ellipsoid[1] = y3_center;
-					}
-
-					//compute the new center of the interval (i.e., the new value for y3 to test)
-					//and the difference to the old center (for stopping the search at some point)
-					BigFraction newCenter = ellipsoid[0].add(ellipsoid[1].subtract(ellipsoid[0]).divide(2));
-					y3_diff = newCenter.subtract(y3_center).abs();
-					y3_center = newCenter;
-				}
-			}
-			if (maxWeightPattern!=null && maxWeightPattern.getTotalWeightInclSand(sandExpansion).compareTo(targetRatio)>0) {
+			BigFraction y3 = findY3(k);
+			if (y3==null) {
 				//we stopped the search without finding a feasible y3-value: stop the program
 				log("Couldn't find value for y3 that makes dual LP feasible! Stopping program.");
 				System.exit(0);
 			}
-			log(String.format("Binary search for case k=" + k + " successful! y3=%.5f found.\n\n--------------------------------------------\n", y3Values[k].doubleValue()));
-			showTime();
 		}
 
 		//write the parameters found to a file; this can be used in the verifier then
 		createOutputFile();
 	}
+	
+	private BigFraction findY3(int k) throws IOException {
+
+		BigFraction[] ellipsoid = {BigFraction.ZERO, new BigFraction(1)};
+		BigFraction y3_center = new BigFraction(3,16);
+
+		//store the difference to the last y3 value tried; this is for stopping the search when 
+		//it changes only marginally
+		BigFraction y3_diff = BigFraction.ONE;
+		//also, count the number of iterations; we also stop after a maximum number of iterations
+		int iter = 0;
+		int maxIter = 20;
+
+		KnapsackPattern maxWeightPattern = null;
+		while (iter<maxIter && y3_diff.compareTo(new BigFraction(1, 10000000))>0) {
+			iter++;
+			//test next y3-value: check feasibility of the dual LP
+			maxWeightPattern = checkDualLP(k, y3_center);
+
+			// GOOD CASE: the dual LP is feasible, so we can stop the search for this case and store the y3-value
+			if (maxWeightPattern==null || maxWeightPattern.getTotalWeightInclSand(sandExpansion).compareTo(targetRatio)<=0) {
+				log(String.format("\tFeasible! y3=%.5f", y3_center.doubleValue()));
+				y3Values[k] = y3_center;
+				log(String.format("Binary search for case k=" + k + " successful! y3=%.5f found.\n\n--------------------------------------------\n", y3Values[k].doubleValue()));
+				showTime();
+				return y3_center;
+			} else {
+				//LP is infeasible: maxWeightPattern contains the pattern that violates the constraint, 
+				//i.e. the pattern that has weight larger than y4
+				BigFraction totalW = maxWeightPattern.getTotalWeightWInclSand(types, k, sandExpansion);
+				BigFraction totalV = maxWeightPattern.getTotalWeightVInclSand(types, k, sandExpansion);
+				BigFraction diff = totalW.subtract(totalV);
+				if (diff.compareTo(BigFraction.ZERO)==0) {
+					//we can't do anything! weight is equal for w and v, so too high for every y3
+					break;
+				} else if (diff.compareTo(BigFraction.ZERO)>0) {//change the search interval for y3
+					ellipsoid[0] = y3_center;
+				} else {
+					ellipsoid[1] = y3_center;
+				}
+
+				//compute the new center of the interval (i.e., the new value for y3 to test)
+				//and the difference to the old center (for stopping the search at some point)
+				BigFraction newCenter = ellipsoid[0].add(ellipsoid[1].subtract(ellipsoid[0]).divide(2));
+				y3_diff = newCenter.subtract(y3_center).abs();
+				y3_center = newCenter;
+			}
+		}
+		
+		return null;
+	}
 
 	/**
 	 * This method checks feasibility of the dual LP for certain values of k and y3.
 	 */
-	private KnapsackPattern checkDualLP(int k, BigFraction y3) throws IOException {
+	@Override
+	protected KnapsackPattern checkDualLP(int k, BigFraction y3) throws IOException {
 		BigFraction[] allSizes = new BigFraction[types.length];
 		BigFraction[] weights = new BigFraction[allSizes.length];
 		for (int i = 0; i<types.length; ++i) {
@@ -164,5 +171,26 @@ public class BinarySearchSH extends DualLPChecker {
 
 	private void showTime() {
 		System.out.println((System.nanoTime() - startTime)/1e9);
+	}
+
+	@Override
+	protected BigFraction checkY1(int k, BigFraction w1) {
+		return null;
+	}
+
+	@Override
+	protected BigFraction checkY2(int k, BigFraction w1) {
+		return null;
+	}
+
+	@Override
+	protected void checkY3(BigFraction y3, int k) {
+		//nothing to do here
+	}
+
+	@Override
+	protected void writeKnapsackFile(int k, BigFraction[] sizes,
+			BigFraction[] weights) throws IOException {
+		//nothing to do here
 	}
 }

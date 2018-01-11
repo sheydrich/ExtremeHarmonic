@@ -2,7 +2,7 @@ Goal:1583 / 1000
 RedSpace:0;1 / 6;3 / 17;1 / 5;11 / 50;2 / 9;6 / 25;13 / 50;7 / 25;3 / 10;8 / 25;33 / 100;1 / 3;167 / 500;67 / 200;17 / 50;7 / 20;9 / 25;37 / 100;19 / 50;39 / 100;2 / 5;41 / 100;41783 / 100000;
 DualSolutionY1:none;none;none;none;none;none;none;none;none;none;none;none;none;449 / 148500;133 / 49500;283 / 49500;283 / 49500;none;none;none;none;none;none;none;
 DualSolutionY2:none;none;none;none;none;none;none;none;none;none;none;none;none;449 / 74250;133 / 24750;283 / 24750;283 / 24750;none;none;none;none;none;none;none;
-DualSolutionY3:none;3 / 16;9 / 32;9 / 32;9 / 32;3 / 16;9 / 32;9 / 32;3 / 16;9 / 32;9 / 32;9 / 32;none;3 / 16;3 / 16;3 / 16;3 / 16;3 / 16;3 / 16;3 / 16;3 / 16;3 / 16;3 / 16;3 / 16;
+DualSolutionY3:none;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;none;3 / 16;3 / 16;3 / 16;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;1 / 4;
 Types: [size, red fraction, bluefit, redfit, needs, leaves]
 41783 / 100000;0;2;0;0;0
 41 / 100;87 / 5500;2;1;23;0

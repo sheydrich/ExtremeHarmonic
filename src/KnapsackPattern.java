@@ -18,10 +18,10 @@ public class KnapsackPattern {
 	 * This class represents one item type packed in this pattern.
 	 *
 	 */
-	private class Entry {
-		private final BigFraction size; //size of the item
-		private final BigFraction weight; //weight of the item
-		private int cardinality; //cardinality, how often this item is present in the pattern
+	class Entry {
+		final BigFraction size; //size of the item
+		final BigFraction weight; //weight of the item
+		int cardinality; //cardinality, how often this item is present in the pattern
 		
 		public Entry(BigFraction size, BigFraction weight, int card) {
 			this.size = size;
@@ -202,8 +202,9 @@ public class KnapsackPattern {
 				}
 			}
 			if (index<0) total = total.add(BigFraction.ONE); //then it is a large item, those have w-weight 1
-			else total = total.add(types[index].getWeightW(k));
+			else total = total.add(types[index].getWeightW(k).multiply(e.cardinality));
 		}
+		total = total.add(BigFraction.ONE.subtract(totalSize).multiply(sandExpansion));
 		
 		return total;
 	}
@@ -228,8 +229,9 @@ public class KnapsackPattern {
 				if (!e.size.equals(BigFraction.ONE_HALF)) //then it has weight 1; otherwise it has weight 0
 					total = total.add(BigFraction.ONE);
 			} else 
-				total = total.add(types[index].getWeightV(classOfR));
+				total = total.add(types[index].getWeightV(classOfR).multiply(e.cardinality));
 		}
+		total = total.add(BigFraction.ONE.subtract(totalSize).multiply(sandExpansion));
 		
 		return total;
 	}
