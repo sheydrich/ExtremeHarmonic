@@ -17,7 +17,14 @@
 	<div class="panel panel-default">
 	  <div class="panel-heading">
 		<h1>Parameters for Son of Harmonic</h1>
-		This page contains all parameters used by the algorithm Son of Harmonic. Note that the redspace value 1/3, while defined, is not actually used by any type, as items just below 1/3 are never colored red.<br/>
+		This page contains all parameters used by the algorithm Son of Harmonic. 
+		Note that the redspace value 1/3, while defined for reasons of simplicity, is not actually used by any type, 
+		as items just below 1/3 are never colored red. This corresponds to k = 89, 
+		  meaning that there is nothing to check for this value of k.
+		The program uses the simple (non-marks-based) LP for all small types 
+		  (that is, types that need at most 1/3 space for their red items: k = 1 until k = 88)
+		  and for all types that need at least 169 / 500 redspace (k = 112 until k = 192).
+		<br/>
 		<ul>
 		<li><a href="#tableTypes">Item types</a></li>
 		<li><a href="#tableRedSpace">redSpace-values and y<sub>3</sub><sup>*</sup>-values</a></li>
