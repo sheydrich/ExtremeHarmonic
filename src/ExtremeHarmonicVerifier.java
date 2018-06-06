@@ -2,6 +2,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.apache.commons.math3.fraction.BigFraction;
+
 
 /**
  * 
@@ -53,5 +55,11 @@ public class ExtremeHarmonicVerifier extends Verifier {
 	@Override
 	protected void readInput(String inputFile, FileIO io) throws IOException {
 		io.readVerifierInput(inputFile);
+	}
+
+	@Override
+	protected BigFraction getFirstTypeUpperBound() {
+		// TODO Auto-generated method stub
+		return BigFraction.ONE_HALF;
 	}
 }

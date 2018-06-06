@@ -85,4 +85,10 @@ public class SuperHarmonicVerifier extends Verifier {
 			log(String.format("\tNo pattern has weight above %.5f", patternWeightThreshold.doubleValue()));
 		return p;
 	}
+
+	@Override
+	protected BigFraction getFirstTypeUpperBound() {
+		// TODO Auto-generated method stub
+		return BigFraction.ONE;
+	}
 }

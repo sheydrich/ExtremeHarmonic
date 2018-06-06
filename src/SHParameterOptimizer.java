@@ -92,7 +92,7 @@ public class SHParameterOptimizer {
 		//Second, compute all parameters: bluefit, redfit, leaves, needs
 		TypeInfo last = null;
 		for (TypeInfo t : types) {
-			BigFraction sizeUB = last==null ? BigFraction.ONE_HALF : last.getSizeLB();
+			BigFraction sizeUB = last==null ? BigFraction.ONE : last.getSizeLB();
 			int b = computeBluefit(sizeUB);
 			t.setBluefit(b);
 			int r = t.getRedFraction().equals(BigFraction.ZERO) ? 0 : computeRedfit(sizeUB);
@@ -239,13 +239,13 @@ public class SHParameterOptimizer {
 			BigFraction s = t.getSizeLB();
 			if (s.compareTo(BigFraction.ONE_HALF)<0 && s.compareTo(BigFraction.ONE_THIRD)>0) {
 				if (!redSpaces.contains(s)){
-					redSpaces.add(s);
-					System.out.println(String.format("\t\tAdding redSpace %s = %.5f because of size %.5f", s.toString(), s.doubleValue(), s.doubleValue()));
+//					redSpaces.add(s);
+//					System.out.println(String.format("\t\tAdding redSpace %s = %.5f because of size %.5f", s.toString(), s.doubleValue(), s.doubleValue()));
 				}
 				BigFraction b = BigFraction.ONE.subtract(s.multiply(2));
 				if (!redSpaces.contains(b)) {
-					redSpaces.add(b);
-					System.out.println(String.format("\t\tAdding redSpace %s = %.5f because of size %.5f", b.toString(), b.doubleValue(), s.doubleValue()));
+//					redSpaces.add(b);
+//					System.out.println(String.format("\t\tAdding redSpace %s = %.5f because of size %.5f", b.toString(), b.doubleValue(), s.doubleValue()));
 				}
 
 				//also, if this size is between 1/3 and 1/2 and the red fraction given in the file is zero,

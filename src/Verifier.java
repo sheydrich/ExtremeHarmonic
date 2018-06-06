@@ -52,6 +52,8 @@ public abstract class Verifier extends DualLPChecker {
 	
 	protected abstract void readInput(String inputFile, FileIO io) throws IOException;
 
+	protected abstract BigFraction getFirstTypeUpperBound();
+
 	/**
 	 * This method starts the verification itself.
 	 * @throws IOException
@@ -201,7 +203,8 @@ public abstract class Verifier extends DualLPChecker {
 
 	private void verifyBluefit(int type) throws IOException {
 		int bluefit = types[type].getBluefit();
-		int supposedBluefit = type==0 ? 2 : types[type-1].getSizeLB().reciprocal().intValue();
+		int Type0BlueFit = BigFraction.ONE.divide(getFirstTypeUpperBound()).intValue();
+		int supposedBluefit = type==0 ? Type0BlueFit : types[type-1].getSizeLB().reciprocal().intValue();
 		if (bluefit!=supposedBluefit) {
 			System.out.println("ERROR: bluefit of type "+type+" is incorrect, should be " + supposedBluefit + " but was " + bluefit);
 			System.exit(1);
@@ -215,7 +218,7 @@ public abstract class Verifier extends DualLPChecker {
 	 * @throws IOException 
 	 */
 	private void verifyLeaves(int type) throws IOException {
-		BigFraction sizeUb = type>0 ? types[type-1].getSizeLB() : BigFraction.ONE_HALF;
+		BigFraction sizeUb = type>0 ? types[type-1].getSizeLB() : getFirstTypeUpperBound();
 		BigFraction spaceOccupied = sizeUb.multiply(types[type].getBluefit());
 		BigFraction spaceLeft = BigFraction.ONE.subtract(spaceOccupied);
 		if (spaceLeft.compareTo(sizeUb)>0) throw new IllegalStateException("Wrong bluefit value for type "+type+"! Bluefit=" + types[type].getBluefit() + " items of max. size " + sizeUb + " leave space " + spaceLeft);
@@ -421,5 +424,5 @@ public abstract class Verifier extends DualLPChecker {
 		}
 		return res;
 	}
-
+	
 }
