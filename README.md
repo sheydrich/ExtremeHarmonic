@@ -39,7 +39,7 @@ In addition, we provide a simplified version of our program, `SuperHarmonicVerif
 
 * [SuperHarmonicVerifier.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/SuperHarmonicVerifier.jar) with input files [1.5888.vp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.vp) and [1.5884.vp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.vp)
 * [BinarySearchSH.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/BinarySearchSH.jar) with input files [1.5888.bsp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.bsp) and [1.5884.bsp](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.bsp)
-* [ParameterOptimizer.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/ParameterOptimizerSH.jar) with input files [1.5888.pop](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.pop) and [1.5884.pop](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.pop)
+* [ParameterOptimizer.jar](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/ParameterOptimizerSH.jar) with input files [1.5888.pop](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5888.pop) and [1.5884.pop](https://github.com/sheydrich/ExtremeHarmonic/blob/master/executables/1.5884.pop) (Note: the pop files are the most human-readable files)
 
 ## Other resources
 
